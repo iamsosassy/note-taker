@@ -1,13 +1,13 @@
-// need express to interact with the front end
+// express to interact with the front end
 const express = require("express");
-// need path for filename paths
+// path for filename paths
 const path = require("path");
-// need fs to read and write to files
+// fs to read and write to files
 const fs = require("fs");
 
 // creating an "express" server
 const app = express();
-// Sets an Initial port for listeners
+// Initial port for listeners
 const PORT = process.env.PORT || 8080;
 
 //  Initialize notesData
@@ -19,7 +19,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, "Develop/public")));
 
-// routes
+// Routes
 
 // api call response for all the notes, and sends the results to the browser as an array of object
 
@@ -49,7 +49,7 @@ app.post("/api/notes", function(req, res) {
 
         // parse the data to get an array of objects
         notesData = JSON.parse(notesData);
-        // Set new notes id
+        // new notes id
         req.body.id = notesData.length;
         // add the new note to the array of note objects
         notesData.push(req.body); // req.body - user input
